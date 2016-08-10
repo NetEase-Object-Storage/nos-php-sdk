@@ -1,2 +1,1 @@
-# nos-php-sdk
-Netease Object Storage(NOS) PHP SDK
+PHP SDK 使用指南

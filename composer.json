@@ -1,0 +1,24 @@
+{
+    "name": "netease/nos-sdk-php",
+    "description": "netease NOS SDK for PHP",
+    "homepage": "http://www.netease.com",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "netease",
+            "homepage": "http://www.netease.com"
+        }
+    ],
+    "require": {
+        "php":">=5.3"
+    },
+    "require-dev" : {
+        "phpunit/phpunit": "~4.0",
+        "satooshi/php-coveralls": "~1.0"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"NOS\\": "src/NOS"}
+    }
+}

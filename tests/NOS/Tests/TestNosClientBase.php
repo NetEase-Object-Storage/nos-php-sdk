@@ -1,7 +1,7 @@
 <?php
 namespace NOS\Tests;
 
-use NOS\NosClient;
+use NOS\NOSClient;
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Common.php';
 
 class TestNosClientBase extends \PHPUnit_Framework_TestCase

@@ -4,7 +4,7 @@ require_once __DIR__ . '/Common.php';
 
 use NOS\Http\RequestCore;
 use NOS\Http\ResponseCore;
-use NOS\NosClient;
+use NOS\NOSClient;
 use NOS\Core\NosException;
 
 $bucket = Common::getTestBucketName();

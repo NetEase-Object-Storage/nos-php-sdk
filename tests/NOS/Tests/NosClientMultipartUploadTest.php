@@ -3,7 +3,7 @@ namespace NOS\Tests;
 
 use NOS\Core\NosException;
 use NOS\Core\NosUtil;
-use NOS\NosClient;
+use NOS\NOSClient;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'TestNosClientBase.php';
 
@@ -17,8 +17,8 @@ class NosClientMultipartUploadTest extends TestNosClientBase
 
         $object = 'multipart-bigfile-test.tmp';
         try {
-            $this->nosClient->multiuploadFile($this->bucket, $object, $bigFileName, array(NosClient::NOS_PART_SIZE => 1));
-            $options = array(NosClient::NOS_FILE_DOWNLOAD => $localFilename);
+            $this->nosClient->multiuploadFile($this->bucket, $object, $bigFileName, array(NOSClient::NOS_PART_SIZE => 1));
+            $options = array(NOSClient::NOS_FILE_DOWNLOAD => $localFilename);
             $this->nosClient->getObject($this->bucket, $object, $options);
             $this->assertEquals(md5_file($bigFileName), md5_file($localFilename));
          } catch (NosException $e) {
@@ -48,8 +48,8 @@ class NosClientMultipartUploadTest extends TestNosClientBase
         $upload_parts = array();
         NosUtil::generateFile($partFileName, 6 * 1024);
         $options = array();
-        $options[NosClient::NOS_FILE_UPLOAD] = $partFileName;
-        $options[NosClient::NOS_PART_NUM] = $partId;
+        $options[NOSClient::NOS_FILE_UPLOAD] = $partFileName;
+        $options[NOSClient::NOS_PART_NUM] = $partId;
         $eTag = $this->nosClient->uploadPart($this->bucket,$object,$upload_id,$options);
         $upload_parts[] = array(
             'PartNumber' => $partId,
@@ -99,8 +99,8 @@ class NosClientMultipartUploadTest extends TestNosClientBase
         $partId = 1;
         NosUtil::generateFile($partFileName, 6 * 1024);
         $options = array();
-        $options[NosClient::NOS_FILE_UPLOAD] = $partFileName;
-        $options[NosClient::NOS_PART_NUM] = $partId;
+        $options[NOSClient::NOS_FILE_UPLOAD] = $partFileName;
+        $options[NOSClient::NOS_PART_NUM] = $partId;
         $this->nosClient->uploadPart($this->bucket,$object,$upload_id,$options);
 
         try {

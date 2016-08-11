@@ -2,7 +2,7 @@
 namespace NOS\Tests;
 
 use NOS\Core\NosException;
-use NOS\NosClient;
+use NOS\NOSClient;
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'TestNosClientBase.php';
 
 class NosClientObjectTest extends TestNosClientBase
@@ -13,7 +13,7 @@ class NosClientObjectTest extends TestNosClientBase
         $object = "upload-test-object-name.txt";
         try {
             $res = $this->nosClient->getObject($this->bucket, $object, array(
-                NosClient::NOS_LAST_MODIFIED => "xx"
+                NOSClient::NOS_LAST_MODIFIED => "xx"
             ));
             $this->assertEquals(file_get_contents(__FILE__), $res);
         } catch (NosException $e) {
@@ -26,7 +26,7 @@ class NosClientObjectTest extends TestNosClientBase
         $object = "upload-test-object-name.txt";
         try {
             $res = $this->nosClient->getObject($this->bucket, $object, array(
-                NosClient::NOS_ETAG => "xx"
+                NOSClient::NOS_ETAG => "xx"
             ));
             $this->assertEquals(file_get_contents(__FILE__), $res);
         } catch (NosException $e) {
@@ -62,8 +62,8 @@ class NosClientObjectTest extends TestNosClientBase
         $object = "upload-test-object-name.txt";
         $content = file_get_contents(__FILE__);
         $options = array(
-            NosClient::NOS_LENGTH => strlen($content),
-            NosClient::NOS_HEADERS => array(
+            NOSClient::NOS_LENGTH => strlen($content),
+            NOSClient::NOS_HEADERS => array(
                 'Expires' => 'Fri, 28 Feb 2020 05:38:42 GMT',
                 'Cache-Control' => 'no-cache',
                 'Content-Disposition' => 'attachment;filename=oss_download.log',
@@ -101,7 +101,7 @@ class NosClientObjectTest extends TestNosClientBase
          */
         try {
             $options = array(
-                NosClient::NOS_RANGE => '0-4'
+                NOSClient::NOS_RANGE => '0-4'
             );
             $content = $this->nosClient->getObject($this->bucket, $object, $options);
             $this->assertEquals($content, '<?php');
@@ -139,7 +139,7 @@ class NosClientObjectTest extends TestNosClientBase
          */
         $localfile = "upload-test-object-name-local.txt";
         $options = array(
-            NosClient::NOS_FILE_DOWNLOAD => $localfile
+            NOSClient::NOS_FILE_DOWNLOAD => $localfile
         );
 
         try {

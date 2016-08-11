@@ -4,7 +4,7 @@ namespace NOS\Tests;
 use NOS\Core\NosException;
 use NOS\Http\RequestCore;
 use NOS\Http\ResponseCore;
-use NOS\NosClient;
+use NOS\NOSClient;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'TestNosClientBase.php';
 

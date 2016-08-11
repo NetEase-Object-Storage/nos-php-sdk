@@ -2,10 +2,9 @@
 
 require_once __DIR__ . '/Common.php';
 
-use NOS\NosClient;
+use NOS\NOSClient;
 use NOS\Core\NosUtil;
 use NOS\Core\NosException;
-use Prophecy\Doubler\NameGenerator;
 
 $bucket = Common::getTestBucketName();
 $nosClient = Common::getNosClient();
@@ -67,18 +66,18 @@ function putObjectByRawApis($nosClient, $bucket)
     $uploadPosition = 0;
     $isCheckMd5 = true;
     foreach ($pieces as $i => $piece) {
-        $fromPos = $uploadPosition + (integer)$piece[NosClient::NOS_SEEK_TO];
-        $toPos = (integer)$piece[NosClient::NOS_LENGTH] + $fromPos - 1;
+        $fromPos = $uploadPosition + (integer)$piece[NOSClient::NOS_SEEK_TO];
+        $toPos = (integer)$piece[NOSClient::NOS_LENGTH] + $fromPos - 1;
         $upOptions = array(
-            $nosClient::NOS_FILE_UPLOAD => $uploadFile,
-            $nosClient::NOS_PART_NUM => ($i + 1),
-            $nosClient::NOS_SEEK_TO => $fromPos,
-            $nosClient::NOS_LENGTH => $toPos - $fromPos + 1,
-            $nosClient::NOS_CHECK_MD5 => $isCheckMd5,
+            NOSClient::NOS_FILE_UPLOAD => $uploadFile,
+            NOSClient::NOS_PART_NUM => ($i + 1),
+            NOSClient::NOS_SEEK_TO => $fromPos,
+            NOSClient::NOS_LENGTH => $toPos - $fromPos + 1,
+            NOSClient::NOS_CHECK_MD5 => $isCheckMd5,
         );
         if ($isCheckMd5) {
             $contentMd5 = NosUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
-            $upOptions[NosClient::NOS_CONTENT_MD5] = $contentMd5;
+            $upOptions[NOSClient::NOS_CONTENT_MD5] = $contentMd5;
         }
         //2. 将每一分片上传到nos
         try {

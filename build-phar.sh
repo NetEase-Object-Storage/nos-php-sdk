@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /bin/sh
 
 # Remove dev deps to reduce phar size
 rm -rf composer.lock vendor/
@@ -7,7 +7,7 @@ rm -rf composer.lock vendor/
 composer install --no-dev
 
 # Find SDK version
-version=$(grep 'const NOS_VERSION' src/NOS/NosClient.php | grep -oE '[0-9.]+')
+version=$(grep 'const NOS_VERSION' src/NOS/NOSClient.php | grep -oE '[0-9.]+')
 
 # Build phar
 phar-composer build . netease-nos-php-sdk-$version.phar

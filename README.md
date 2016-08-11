@@ -1,32 +1,35 @@
-Netease Object Storage(NOS) PHP SDK
-- V1.0.0
-Ìá¹©ÒÔÏÂ½Ó¿Ú£º
-(1)Í°²Ù×÷½Ó¿Ú
-	createBucket ------ ĞÂ½¨Í°
-	deleteBucket ------ É¾³ıÍ°
-	doesBucketExist ------ ÅĞ¶ÏÍ°ÊÇ·ñ´æÔÚ
-	putBucketAcl ------ ÉèÖÃÍ°µÄacl
-	getBucketAcl ------ »ñÈ¡Í°µÄacl
-	listBuckets ------ ÁĞ¾Ùµ±Ç°ÓÃ»§ËùÓĞµÄÍ°
-	getBucketLocation ------ »ñÈ¡Í°µÄlocation
-(2)¶ÔÏó²Ù×÷½Ó¿Ú
-	putObject ------ ÉÏ´«×Ö·û´®¶ÔÏó
-	uploadFile ------ ÉÏ´«ÎÄ¼ş
-	doesObjectExist ------ ÅĞ¶Ï¶ÔÏóÊÇ·ñ´æÔÚ
-	GetObjectMeta ------ »ñÈ¡¶ÔÏóÔªĞÅÏ¢
-	copyObject ------ ¸´ÖÆ¶ÔÏó
-	moveObject ------ ÒÆ¶¯¶ÔÏó
-	deleteObject ------ É¾³ı¶ÔÏó
-	deleteObjects ------ ÅúÁ¿É¾³ı¶ÔÏó
-	getObject ------ »ñÈ¡¶ÔÏó
-(3)´ó¶ÔÏó·Ö¿é²Ù×÷½Ó¿Ú
-	initiateMultipartUpload ------ ³õÊ¼»¯·Ö¿éÉÏ´«
-	generateMultiuploadParts ------ Éú³ÉÉÏ´«·Ö¿éÁĞ±í
-	uploadPart ------ ÉÏ´«·Ö¿é
-	completeMultipartUpload ------ Íê³É·Ö¿éÉÏ´«
-	listParts ------ ÁĞ³öÕıÔÚÉÏ´«µÄ·Ö¿é
-	abortMultipartUpload ------ Òì³£½áÊø·Ö¿éÉÏ´«
-	listMultipartUploads ------ ÁĞ³öÕıÔÚ½øĞĞµÄ·Ö¿éÉÏ´«ÈÎÎñ
-	multiuploadFile ------ Ê¹ÓÃ·Ö¿éÉÏ´«Ò»¸ö´óÎÄ¼ş
-(4)Ç©ÃûURLÉú³É
-	signUrl ------ Éú³ÉÇ©Ãûurl
+##Netease Object Storage(NOS) PHP SDK##
+V1.0.0 æä¾›ä»¥ä¸‹æ¥å£ï¼š
+
+### æ¡¶æ“ä½œæ¥å£
+1. createBucket ------ æ–°å»ºæ¡¶
+2. deleteBucket ------ åˆ é™¤æ¡¶
+3. doesBucketExist ------ åˆ¤æ–­æ¡¶æ˜¯å¦å­˜åœ¨
+4. putBucketAcl ------ è®¾ç½®æ¡¶çš„acl
+5. getBucketAcl ------ è·å–æ¡¶çš„acl
+6. listBuckets ------ åˆ—ä¸¾å½“å‰ç”¨æˆ·æ‰€æœ‰çš„æ¡¶
+7. getBucketLocation ------ è·å–æ¡¶çš„location
+
+### å¯¹è±¡æ“ä½œæ¥å£
+1. putObject ------ ä¸Šä¼ å­—ç¬¦ä¸²å¯¹è±¡
+2. uploadFile ------ ä¸Šä¼ æ–‡ä»¶
+3. doesObjectExist ------ åˆ¤æ–­å¯¹è±¡æ˜¯å¦å­˜åœ¨
+4. GetObjectMeta ------ è·å–å¯¹è±¡å…ƒä¿¡æ¯
+5. copyObject ------ å¤åˆ¶å¯¹è±¡
+6. moveObject ------ ç§»åŠ¨å¯¹è±¡
+7. deleteObject ------ åˆ é™¤å¯¹è±¡
+8. deleteObjects ------ æ‰¹é‡åˆ é™¤å¯¹è±¡
+9. getObject ------ è·å–å¯¹è±¡
+
+### å¤§å¯¹è±¡åˆ†å—æ“ä½œæ¥å£
+1. initiateMultipartUpload ------ åˆå§‹åŒ–åˆ†å—ä¸Šä¼ 
+2. generateMultiuploadParts ------ ç”Ÿæˆä¸Šä¼ åˆ†å—åˆ—è¡¨
+3. uploadPart ------ ä¸Šä¼ åˆ†å—
+4. completeMultipartUpload ------ å®Œæˆåˆ†å—ä¸Šä¼ 
+5. listParts ------ åˆ—å‡ºæ­£åœ¨ä¸Šä¼ çš„åˆ†å—
+6. abortMultipartUpload ------ å¼‚å¸¸ç»“æŸåˆ†å—ä¸Šä¼ 
+7. listMultipartUploads ------ åˆ—å‡ºæ­£åœ¨è¿›è¡Œçš„åˆ†å—ä¸Šä¼ ä»»åŠ¡
+8. multiuploadFile ------ ä½¿ç”¨åˆ†å—ä¸Šä¼ ä¸€ä¸ªå¤§æ–‡ä»¶
+
+### ç­¾åURLç”Ÿæˆ
+1. signUrl ------ ç”Ÿæˆç­¾åurl

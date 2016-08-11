@@ -31,7 +31,7 @@ use NOS\Result\MultiDeleteResult;
  * 用户通过NOSClient实例可以进行Object，MultipartUpload等操作，具体
  * 的接口规则可以参考官方NOS API文档
  */
-class NOSClient
+class NosClient
 {
 
     /**

@@ -2,7 +2,7 @@
 namespace NOS\Tests;
 
 use NOS\Core\NosException;
-use NOS\NOSClient;
+use NOS\NosClient;
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'TestNosClientBase.php';
 
 class NosClientBucketTest extends TestNosClientBase
@@ -36,9 +36,9 @@ class NosClientBucketTest extends TestNosClientBase
         $bucketList = $bucketListInfo->getBucketList();
         $this->assertTrue(is_array($bucketList));
         $this->assertGreaterThan(0, count($bucketList));
-        $this->nosClient->putBucketAcl($this->bucket, NOSClient::NOS_ACL_TYPE_PUBLIC_READ);
+        $this->nosClient->putBucketAcl($this->bucket, NosClient::NOS_ACL_TYPE_PUBLIC_READ);
         Common::waitMetaSync();
-        $this->assertEquals($this->nosClient->getBucketAcl($this->bucket), NOSClient::NOS_ACL_TYPE_PUBLIC_READ);
+        $this->assertEquals($this->nosClient->getBucketAcl($this->bucket), NosClient::NOS_ACL_TYPE_PUBLIC_READ);
 
         //$this->nosClient->putBucketDuplication($this->bucket,NosClient::NOS_DUPLICATION_ENABLE);
         //Common::waitMetaSync();

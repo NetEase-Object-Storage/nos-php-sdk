@@ -7,7 +7,7 @@ if (is_file(__DIR__ . '/../vendor/autoload.php')) {
 }
 require_once __DIR__ . '/Config.php';
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosException;
 
 class Common
@@ -24,7 +24,7 @@ class Common
     public static function getNosClient()
     {
         try {
-            $nosClient = new NOSClient(self::accessKey, self::accessKeySecret, self::endPoint);
+            $nosClient = new NosClient(self::accessKey, self::accessKeySecret, self::endPoint);
         } catch (NosException $e) {
             printf(__FUNCTION__ . "creating NosClient instance: FAILED\n");
             printf($e->getMessage() . "\n");
@@ -53,7 +53,7 @@ class Common
         if ($exist) {
             return;
         }
-        $acl = NOSClient::NOS_ACL_TYPE_PUBLIC_READ;
+        $acl = NosClient::NOS_ACL_TYPE_PUBLIC_READ;
         try {
             $nosClient->createBucket(self::bucket, $acl);
         } catch (NosException $e) {

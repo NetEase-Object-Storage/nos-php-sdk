@@ -3,7 +3,7 @@ namespace NOS\Tests;
 
 require_once __DIR__ . '/../../../autoload.php';
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosException;
 
 class Common
@@ -16,7 +16,7 @@ class Common
     public static function getNosClient()
     {
         try {
-            $NosClient = new NOSClient(
+            $NosClient = new NosClient(
                 getenv('NOS_ACCESS_KEY_ID'),
                 getenv('NOS_ACCESS_KEY_SECRET'),
                 getenv('NOS_ENDPOINT'), false);
@@ -41,7 +41,7 @@ class Common
         $nosClient = self::getNosClient();
         if (is_null($nosClient)) exit(1);
         $bucket = self::getBucketName();
-        $acl = NOSClient::NOS_ACL_TYPE_PUBLIC_READ;
+        $acl = NosClient::NOS_ACL_TYPE_PUBLIC_READ;
         try {
             $nosClient->createBucket($bucket, $acl);
         } catch (NosException $e) {

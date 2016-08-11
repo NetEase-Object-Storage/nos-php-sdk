@@ -1,7 +1,7 @@
 <?php
 namespace NOS\Tests;
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosException;
 
 class NosClientTest extends \PHPUnit_Framework_TestCase
@@ -9,7 +9,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', 'http://nos-eastchina1.126.net');
+            $nosClient = new NosClient('id', 'key', 'http://nos-eastchina1.126.net');
             $this->assertFalse($nosClient->isUseSSL());
             $nosClient->setUseSSL(true);
             $this->assertTrue($nosClient->isUseSSL());
@@ -27,7 +27,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct2()
     {
         try {
-            $nosClient = new NOSClient('id', "", 'http://nos-eastchina1.126.net');
+            $nosClient = new NosClient('id', "", 'http://nos-eastchina1.126.net');
             $this->assertNull($nosClient);
             $this->assertFalse(true);
         } catch (NosException $e) {
@@ -38,7 +38,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct3()
     {
         try {
-            $nosClient = new NOSClient("", 'key', 'http://nos-eastchina1.126.net');
+            $nosClient = new NosClient("", 'key', 'http://nos-eastchina1.126.net');
             $this->assertNull($nosClient);
             $this->assertFalse(true);
         } catch (NosException $e) {
@@ -49,7 +49,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct4()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', "");
+            $nosClient = new NosClient('id', 'key', "");
             $this->assertNull($nosClient);
             $this->assertFalse(true);
         } catch (NosException $e) {
@@ -60,7 +60,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct5()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', "123.123.123.1");
+            $nosClient = new NosClient('id', 'key', "123.123.123.1");
             $this->assertNotNull($nosClient);
         } catch (NosException $e) {
             $this->assertTrue(false);
@@ -70,7 +70,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct6()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', "https://123.123.123.1");
+            $nosClient = new NosClient('id', 'key', "https://123.123.123.1");
             $this->assertTrue($nosClient->isUseSSL());
         } catch (NosException $e) {
             $this->assertTrue(false);
@@ -80,7 +80,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct7()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', "http://123.123.123.1");
+            $nosClient = new NosClient('id', 'key', "http://123.123.123.1");
             $this->assertFalse($nosClient->isUseSSL());
         } catch (NosException $e) {
             $this->assertTrue(false);
@@ -90,7 +90,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
     public function testConstrunct8()
     {
         try {
-            $nosClient = new NOSClient('id', 'key', "http://123.123.123.1", true);
+            $nosClient = new NosClient('id', 'key', "http://123.123.123.1", true);
             $nosClient->listBuckets();
             $this->assertFalse(true);
         } catch (NosException $e) {
@@ -107,7 +107,7 @@ class NosClientTest extends \PHPUnit_Framework_TestCase
             var_dump($accessKeyId);
             var_dump($accessKeySecret);
             var_dump($endpoint);
-            $nosClient = new NOSClient($accessKeyId, $accessKeySecret , $endpoint, false);
+            $nosClient = new NosClient($accessKeyId, $accessKeySecret , $endpoint, false);
             $nosClient->listBuckets();
         } catch (NosException $e) {
            echo $e->getMessage();

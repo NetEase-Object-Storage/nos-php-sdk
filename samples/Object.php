@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/Common.php';
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosException;
 
 $bucket = Common::getTestBucketName();
@@ -21,7 +21,7 @@ $content = $nosClient->getObject($bucket, "b.file");
 Common::println("b.file is fetched, the content is: " . $content);
 
 $options = array(
-    NOSClient::NOS_FILE_DOWNLOAD => "./c.file.localcopy",
+    NosClient::NOS_FILE_DOWNLOAD => "./c.file.localcopy",
 );
 $nosClient->getObject($bucket, "c.file", $options);
 Common::println("b.file is fetched to the local file: c.file.localcopy");
@@ -92,8 +92,8 @@ function uploadFile($nosClient, $bucket)
     $options = array();
 
     try {
-        $options[NOSClient::NOS_HEADERS]['Cache-Control'] = 'max-age=60';
-        $options[NOSClient::NOS_HEADERS]['Content-Disposition'] = 'attachment; filename="xxxxxx"';
+        $options[NosClient::NOS_HEADERS]['Cache-Control'] = 'max-age=60';
+        $options[NosClient::NOS_HEADERS]['Content-Disposition'] = 'attachment; filename="xxxxxx"';
         $nosClient->uploadFile($bucket, $object, $filePath, $options);
     } catch (NosException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
@@ -200,7 +200,7 @@ function getObjectToLocalFile($nosClient, $bucket)
     $object = "nos-php-sdk-test/upload-test-object-name.txt";
     $localfile = "upload-test-object-name.txt";
     $options = array(
-        NOSClient::NOS_FILE_DOWNLOAD => $localfile,
+        NosClient::NOS_FILE_DOWNLOAD => $localfile,
     );
 
     try {

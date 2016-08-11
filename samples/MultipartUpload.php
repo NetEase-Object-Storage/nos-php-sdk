@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Common.php';
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosUtil;
 use NOS\Core\NosException;
 
@@ -66,18 +66,18 @@ function putObjectByRawApis($nosClient, $bucket)
     $uploadPosition = 0;
     $isCheckMd5 = true;
     foreach ($pieces as $i => $piece) {
-        $fromPos = $uploadPosition + (integer)$piece[NOSClient::NOS_SEEK_TO];
-        $toPos = (integer)$piece[NOSClient::NOS_LENGTH] + $fromPos - 1;
+        $fromPos = $uploadPosition + (integer)$piece[NosClient::NOS_SEEK_TO];
+        $toPos = (integer)$piece[NosClient::NOS_LENGTH] + $fromPos - 1;
         $upOptions = array(
-            NOSClient::NOS_FILE_UPLOAD => $uploadFile,
-            NOSClient::NOS_PART_NUM => ($i + 1),
-            NOSClient::NOS_SEEK_TO => $fromPos,
-            NOSClient::NOS_LENGTH => $toPos - $fromPos + 1,
-            NOSClient::NOS_CHECK_MD5 => $isCheckMd5,
+            NosClient::NOS_FILE_UPLOAD => $uploadFile,
+            NosClient::NOS_PART_NUM => ($i + 1),
+            NosClient::NOS_SEEK_TO => $fromPos,
+            NosClient::NOS_LENGTH => $toPos - $fromPos + 1,
+            NosClient::NOS_CHECK_MD5 => $isCheckMd5,
         );
         if ($isCheckMd5) {
             $contentMd5 = NosUtil::getMd5SumForFile($uploadFile, $fromPos, $toPos);
-            $upOptions[NOSClient::NOS_CONTENT_MD5] = $contentMd5;
+            $upOptions[NosClient::NOS_CONTENT_MD5] = $contentMd5;
         }
         //2. 将每一分片上传到nos
         try {

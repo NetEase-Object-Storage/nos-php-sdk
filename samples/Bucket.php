@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/Common.php';
 
-use NOS\NOSClient;
+use NOS\NosClient;
 use NOS\Core\NosException;
 
 $bucket = Common::getTestBucketName();
@@ -15,7 +15,7 @@ $exist = $nosClient->doesBucketExist($bucket);
 
 if(!$exist)
 {
-    $nosClient->createBucket($bucket, NOSClient::NOS_ACL_TYPE_PRIVATE);
+    $nosClient->createBucket($bucket, NosClient::NOS_ACL_TYPE_PRIVATE);
     Common::println("bucket $bucket created");
 }
 
@@ -24,7 +24,7 @@ Common::println("bucket $bucket exist? " . ($doesExist ? "yes" : "no"));
 
 $bucketListInfo = $nosClient->listBuckets();
 
-$nosClient->putBucketAcl($bucket, NOSClient::NOS_ACL_TYPE_PUBLIC_READ);
+$nosClient->putBucketAcl($bucket, NosClient::NOS_ACL_TYPE_PUBLIC_READ);
 Common::println("bucket $bucket acl put");
 
 $acl = $nosClient->getBucketAcl($bucket);
@@ -45,7 +45,7 @@ deleteBucket($nosClient, $bucket);
 function createBucket($nosClient, $bucket)
 {
     try {
-        $nosClient->createBucket($bucket, NOSClient::NOS_ACL_TYPE_PUBLIC_READ);
+        $nosClient->createBucket($bucket, NosClient::NOS_ACL_TYPE_PUBLIC_READ);
     } catch (NosException $e) {
         printf(__FUNCTION__ . ": FAILED\n");
         printf($e->getMessage() . "\n");
@@ -86,7 +86,7 @@ function deleteBucket($nosClient, $bucket)
 
 function putBucketAcl($nosClient, $bucket)
 {
-    $acl = NOSClient::NOS_ACL_TYPE_PUBLIC_READ;
+    $acl = NosClient::NOS_ACL_TYPE_PUBLIC_READ;
     try {
         $nosClient->putBucketAcl($bucket, $acl);
     } catch (NosException $e) {

@@ -1,5 +1,5 @@
 {
-    "name": "netease/nos-sdk-php",
+    "name": "netease/nos-php-sdk",
     "description": "netease NOS SDK for PHP",
     "homepage": "https://c.163.com/product/nos",
     "type": "library",

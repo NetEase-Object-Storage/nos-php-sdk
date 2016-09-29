@@ -2,7 +2,7 @@
 namespace NOS;
 
 use NOS\Core\MimeTypes;
-use NOS\Core\NosException;
+use NOS\Core\NOSException;
 use NOS\Http\RequestCore;
 use NOS\Http\RequestCore_Exception;
 use NOS\Http\ResponseCore;
@@ -17,7 +17,7 @@ use NOS\Result\PutSetDeleteResult;
 use NOS\Result\ExistResult;
 use NOS\Model\ObjectListInfo;
 use NOS\Result\UploadPartResult;
-use NOS\Core\NosUtil;
+use NOS\Core\NOSUtil;
 use NOS\Model\ListPartsInfo;
 use NOS\Result\aclResult;
 use NOS\Result\GetLocationResult;
